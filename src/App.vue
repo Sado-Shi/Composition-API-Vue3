@@ -1,36 +1,15 @@
 <template>
-  <HelloWorld v-if="showHellos" :hellos="hellos" />
-  <button @click="showHellos = !showHellos">表示/非表示</button>
-  <button @click="hellos.pop()">delete</button>
+  <Welcome />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import { defineComponent } from 'vue'
+import Welcome from './components/Welcome.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
-  },
-
-  setup () {
-    const hellos = ref([
-      {
-        title: 'ようこそハロー',
-        body: 'これはボディの内容です',
-        id: 1
-      },
-      {
-        title: 'title2',
-        body: 'Lorem ipsum',
-        id: 2
-      }
-    ])
-
-    const showHellos = ref(true)
-
-    return { hellos, showHellos }
+    Welcome
   }
 })
 </script>
