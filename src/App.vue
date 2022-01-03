@@ -1,16 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <HelloWorld v-if="showHellos" :hellos="hellos" />
+  <button @click="showHellos = !showHellos">表示/非表示</button>
+  <button @click="hellos.pop()">delete</button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
     HelloWorld
+  },
+
+  setup () {
+    const hellos = ref([
+      {
+        title: 'ようこそハロー',
+        body: 'これはボディの内容です',
+        id: 1
+      },
+      {
+        title: 'title2',
+        body: 'Lorem ipsum',
+        id: 2
+      }
+    ])
+
+    const showHellos = ref(true)
+
+    return { hellos, showHellos }
   }
 })
 </script>
